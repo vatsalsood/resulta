@@ -1,14 +1,16 @@
-import React, { useState, useEffect, Fragment } from "react";
+import React, { useState, useEffect } from "react";
 import ReactDOM from "react-dom";
 import * as serviceWorker from "./serviceWorker";
+
+// Relative Imports
 import { getRows, getColumns } from "./processapi";
-import { makeStyles,withStyles } from "@material-ui/core/styles";
+import TeamTableHeader from "./components/TeamTableHeader";
+import TeamTableBody from "./components/TeamTableBody";
+
+// Absolute Imports
+import { makeStyles } from "@material-ui/core/styles";
 import Table from "@material-ui/core/Table";
-import TableBody from "@material-ui/core/TableBody";
-import TableCell from "@material-ui/core/TableCell";
 import TableContainer from "@material-ui/core/TableContainer";
-import TableHead from "@material-ui/core/TableHead";
-import TableRow from "@material-ui/core/TableRow";
 import Paper from "@material-ui/core/Paper";
 import TablePagination from "@material-ui/core/TablePagination";
 
@@ -31,7 +33,7 @@ const App = () => {
     setRowsPerPage(parseInt(event.target.value, 10));
     setPage(0);
   };
-  
+
   const useStyles = makeStyles({
     table: {
       minWidth: 650,
@@ -39,55 +41,13 @@ const App = () => {
   });
 
   const classes = useStyles();
-  const StyledTableCell = withStyles((theme) => ({
-    head: {
-      backgroundColor: theme.palette.common.black,
-      color: theme.palette.common.white,
-    },
-    body: {
-      fontSize: 14,
-    },
-  }))(TableCell);
-
-  const StyledTableRow = withStyles((theme) => ({
-    root: {
-      '&:nth-of-type(odd)': {
-        backgroundColor: theme.palette.action.hover,
-      },
-    },
-  }))(TableRow);
 
   return (
     <div>
       <TableContainer component={Paper}>
         <Table className={classes.table} aria-label="simple table">
-          <TableHead>
-            <TableRow>
-              <StyledTableCell>{columns.id}</StyledTableCell>
-              <StyledTableCell>{columns.name}</StyledTableCell>
-              <StyledTableCell align="right">{columns.nickname}</StyledTableCell>
-              <StyledTableCell align="right">{columns.conference}</StyledTableCell>
-              <StyledTableCell align="right">{columns.division}</StyledTableCell>
-            </TableRow>
-          </TableHead>
-          <TableBody>
-             {/* Slice the page to show maximum number of rows for pagination */}
-            {rows
-              .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
-              .map((row) => (
-                <StyledTableRow key={row.name}>
-                  <StyledTableCell component="th" scope="row">
-                    {row.id}
-                  </StyledTableCell>
-                  <StyledTableCell component="th" scope="row">
-                    {row.name}
-                  </StyledTableCell>
-                  <StyledTableCell align="right">{row.nickname}</StyledTableCell>
-                  <StyledTableCell align="right">{row.conference}</StyledTableCell>
-                  <StyledTableCell align="right">{row.division}</StyledTableCell>
-                </StyledTableRow>
-              ))}
-          </TableBody>
+          <TeamTableHeader columns={columns} />
+          <TeamTableBody rows={rows} page={page} rowsPerPage={rowsPerPage} />
         </Table>
       </TableContainer>
       <TablePagination
@@ -119,11 +79,12 @@ ReactDOM.render(
 // Learn more about service workers: https://bit.ly/CRA-PWA
 serviceWorker.unregister();
 
-
 /**
  * Things done
  * 1) render json into a table
  * 2) pagination
  * 3) Stylizing table
- * 
+ * 4) Capitilize column header
+ * 5) Break the page down into components
+ *
  */
