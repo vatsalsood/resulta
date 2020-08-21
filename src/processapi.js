@@ -1,5 +1,10 @@
 import myData from "./resulta.json";
 
-export default function getRows() {
-    return myData.results.data.team;
+export function getRows() {
+  console.log("rows", myData.results.data.team);
+  return myData.results.data.team;
+}
+export function getColumns() {
+  console.log(myData.results.columns);
+  return myData.results.columns;
 }
