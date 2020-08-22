@@ -1,3 +1,10 @@
+/**
+ * TeamTableBody Component
+ * This component renders the body of the table i.e. the rows
+ * Props: rows, page and rowsPerPage
+ */
+
+
 import React from "react";
 import TableBody from "@material-ui/core/TableBody";
 import TableRow from "@material-ui/core/TableRow";

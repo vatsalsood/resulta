@@ -1,14 +1,18 @@
+/**
+ * App component
+ * This file renders the main App component
+ */
 import React, { useState, useEffect } from "react";
 import ReactDOM from "react-dom";
 import * as serviceWorker from "./serviceWorker";
 
 // Relative Imports
 import { getRows, getColumns } from "./processapi";
+import { useStyles } from "./style/styles";
 import TeamTableHeader from "./components/TeamTableHeader";
 import TeamTableBody from "./components/TeamTableBody";
 
 // Absolute Imports
-import { makeStyles } from "@material-ui/core/styles";
 import Table from "@material-ui/core/Table";
 import TableContainer from "@material-ui/core/TableContainer";
 import TextField from "@material-ui/core/TextField";
@@ -17,11 +21,15 @@ import Grid from "@material-ui/core/Grid";
 import TeamTablePagination from "./components/TeamTablePagination";
 
 const App = () => {
+  // Below are all the state variables used in this file
   const [rows, setRows] = useState([]);
   const [filteredRows, setFilteredRows] = useState([]);
   const [columns, setColumns] = useState({});
   const [rowsPerPage, setRowsPerPage] = useState(5);
   const [page, setPage] = useState(0);
+  const [orderBy, setOrderBy] = useState('name');
+ 
+  const classes = useStyles();
 
   useEffect(() => {
     setRows(getRows());
@@ -29,22 +37,6 @@ const App = () => {
     setColumns(getColumns());
   }, []);
 
-  const useStyles = makeStyles((theme) => ({
-    table: {
-      minWidth: 650,
-    },
-    root: {
-      flexGrow: 1,
-      padding: "50px",
-    },
-    paper: {
-      padding: theme.spacing(2),
-      textAlign: "center",
-      color: theme.palette.text.secondary,
-    },
-  }));
-
-  const classes = useStyles();
 
   const filterRows = (event) => {
     let searchText = event.target.value.toLowerCase();
@@ -61,7 +53,8 @@ const App = () => {
         </Grid>
 
         {/**
-         * Could add validation- no invalid characters
+         * This is the search field
+         * Could add validation- no invalid characters allowed etc.
          */}
         <Grid item xs={6}>
           <TextField
@@ -73,6 +66,7 @@ const App = () => {
             }}
           />
         </Grid>
+
         <Grid item xs={12}>
           <TableContainer component={Paper}>
             <Table className={classes.table} aria-label="simple table">

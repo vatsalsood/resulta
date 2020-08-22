@@ -1,5 +1,20 @@
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
+To run this application, make sure you have node and npm nstalled on your machine. If not, you can get the latest stable version from https://nodejs.org/en/ and https://www.npmjs.com/
+
+After installing node and npm , cd to the application directory (resulta).
+
+run `npm install`, this will install all the required node modules for this application.
+
+After the installation is complete, run `npm start`. This should run the application on `localhost:3000` (assuming the user is on a windows machine)
+
+The application displays the data from the JSON file in a table. This is done using React and the material-ui framework
+
+I have also added the ability to search the teams with a search field. Currently the search is only working on the name field. This can be extended into searching by any column.
+
+I have also added pagination as the number of rows was too much for one page
+
+
 ## Available Scripts
 
 In the project directory, you can run:

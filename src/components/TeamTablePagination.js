@@ -1,3 +1,9 @@
+/**
+ * TeamTablePagination Component
+ * This component breaks the table into pages
+ * Props:filteredRows, setRowsPerPage, rowsPerPage, setPage
+ */
+
 import React from "react";
 
 import TablePagination from "@material-ui/core/TablePagination";
