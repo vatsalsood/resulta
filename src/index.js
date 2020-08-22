@@ -13,8 +13,8 @@ import Table from "@material-ui/core/Table";
 import TableContainer from "@material-ui/core/TableContainer";
 import TextField from "@material-ui/core/TextField";
 import Paper from "@material-ui/core/Paper";
-import TablePagination from "@material-ui/core/TablePagination";
 import Grid from "@material-ui/core/Grid";
+import TeamTablePagination from "./components/TeamTablePagination";
 
 const App = () => {
   const [rows, setRows] = useState([]);
@@ -28,15 +28,6 @@ const App = () => {
     setFilteredRows(getRows());
     setColumns(getColumns());
   }, []);
-
-  const handleChangePage = (event, newPage) => {
-    setPage(newPage);
-  };
-
-  const handleChangeRowsPerPage = (event) => {
-    setRowsPerPage(parseInt(event.target.value, 10));
-    setPage(0);
-  };
 
   const useStyles = makeStyles((theme) => ({
     table: {
@@ -93,14 +84,12 @@ const App = () => {
               />
             </Table>
           </TableContainer>
-          <TablePagination
-            rowsPerPageOptions={[5, 10, 25]}
-            component="div"
-            count={filteredRows.length}
-            rowsPerPage={rowsPerPage}
+          <TeamTablePagination
+            filteredRows={filteredRows}
             page={page}
-            onChangePage={handleChangePage}
-            onChangeRowsPerPage={handleChangeRowsPerPage}
+            rowsPerPage={rowsPerPage}
+            setPage={setPage}
+            setRowsPerPage={setRowsPerPage}
           />
         </Grid>
       </Grid>
