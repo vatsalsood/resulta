@@ -44,6 +44,7 @@ const App = () => {
     },
     root: {
       flexGrow: 1,
+      padding: "50px",
     },
     paper: {
       padding: theme.spacing(2),
@@ -63,24 +64,23 @@ const App = () => {
 
   return (
     <div className={classes.root}>
-      <Grid container spacing={3}>
-        {" "}
+      <Grid container justify="center" spacing={3}>
+        <Grid item xs={6}>
+          <h3>ACME Sports</h3>
+        </Grid>
+
         {/**
          * Could add validation- no invalid characters
          */}
         <Grid item xs={6}>
-          <label>ACME Sports</label>
-        </Grid>
-        <Grid item xs={6}>
-          <Paper elevation={3}>
-            <TextField
-              id="standard-basic"
-              label="Search rows"
-              onChange={(e) => {
-                filterRows(e);
-              }}
-            />
-          </Paper>
+          <TextField
+            id="standard-basic"
+            label="Search by name"
+            fullWidth
+            onChange={(e) => {
+              filterRows(e);
+            }}
+          />
         </Grid>
         <Grid item xs={12}>
           <TableContainer component={Paper}>
@@ -131,5 +131,7 @@ serviceWorker.unregister();
  * 3) Stylizing table
  * 4) Capitilize column header
  * 5) Break the page down into components
+ * 6) Add Search by name
+ * 7) Structure the page with grids
  *
  */
