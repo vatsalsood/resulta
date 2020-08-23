@@ -23,8 +23,20 @@ const TeamTableHeader = (props) => {
   return (
     <TableHead>
       <TableRow>
-        <StyledTableCell>{ucFirst(props.columns.id)}</StyledTableCell>
-        <StyledTableCell>{ucFirst(props.columns.name)}</StyledTableCell>
+        <StyledTableCell
+          onClick={() => {
+            props.sortTable(props.columns.id);
+          }}
+        >
+          {ucFirst(props.columns.id)}
+        </StyledTableCell>
+        <StyledTableCell
+          onClick={() => {
+            props.sortTable(props.columns.name);
+          }}
+        >
+          {ucFirst(props.columns.name)}
+        </StyledTableCell>
         <StyledTableCell align="center">
           {props.columns.nickname}
         </StyledTableCell>
