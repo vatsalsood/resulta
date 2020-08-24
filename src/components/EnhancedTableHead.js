@@ -9,6 +9,12 @@ import TablePagination from "@material-ui/core/TablePagination";
 import TableRow from "@material-ui/core/TableRow";
 import TableSortLabel from "@material-ui/core/TableSortLabel";
 
+/**
+ * This components is an attempt to make all the column headers sortable but could not be completed because
+ * of time limitations.
+ * @param {*} props 
+ */
+
 const EnhancedTableHead = (props) => {
   const {
     classes,

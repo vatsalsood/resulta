@@ -27,7 +27,6 @@ const App = () => {
   const [columns, setColumns] = useState({});
   const [rowsPerPage, setRowsPerPage] = useState(5);
   const [page, setPage] = useState(0);
-  const [orderBy, setOrderBy] = useState('name');
  
   const classes = useStyles();
 
@@ -38,6 +37,10 @@ const App = () => {
   }, []);
 
 
+  /**
+   * This function searches the entries with the text typed into the input field
+   * @param {event} event 
+   */
   const filterRows = (event) => {
     let searchText = event.target.value.toLowerCase();
     setFilteredRows(
@@ -106,15 +109,3 @@ ReactDOM.render(
 // unregister() to register() below. Note this comes with some pitfalls.
 // Learn more about service workers: https://bit.ly/CRA-PWA
 serviceWorker.unregister();
-
-/**
- * Things done
- * 1) render json into a table
- * 2) pagination
- * 3) Stylizing table
- * 4) Capitilize column header
- * 5) Break the page down into components
- * 6) Add Search by name
- * 7) Structure the page with grids
- *
- */

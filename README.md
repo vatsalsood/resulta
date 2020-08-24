@@ -14,6 +14,19 @@ I have also added the ability to search the teams with a search field. Currently
 
 I have also added pagination as the number of rows was too much for one page
 
+Things worked upon :
+/**
+ * Things done
+ * 1) render json into a table
+ * 2) pagination
+ * 3) Stylizing table
+ * 4) Capitilize column header
+ * 5) Break the page down into components
+ * 6) Add Search by name
+ * 7) Structure the page with grids
+ *
+ */
+
 
 ## Available Scripts
 

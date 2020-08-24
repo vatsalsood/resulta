@@ -5,6 +5,10 @@ import TableRow from "@material-ui/core/TableRow";
 import TableCell from "@material-ui/core/TableCell";
 
 const TeamTableHeader = (props) => {
+
+  /***
+   * This function capitalized the first letter of the columns
+   */
   const ucFirst = (text) => {
     if (typeof text !== "string") return "";
     return text.charAt(0).toUpperCase() + text.slice(1);

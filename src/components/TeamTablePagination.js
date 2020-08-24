@@ -9,7 +9,7 @@ import React from "react";
 import TablePagination from "@material-ui/core/TablePagination";
 
 const TeamTablePagination = (props) => {
-  const handleChangePage = (newPage) => {
+  const handleChangePage = (event, newPage) => {
     props.setPage(newPage);
   };
 
