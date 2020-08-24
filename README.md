@@ -17,13 +17,13 @@ I have also added pagination as the number of rows was too much for one page
 Things worked upon :
 /**
  * Things done
- * 1) render json into a table
- * 2) pagination
- * 3) Stylizing table
- * 4) Capitilize column header
- * 5) Break the page down into components
- * 6) Add Search by name
- * 7) Structure the page with grids
+ *  render json into a table
+ *  pagination
+ *  Stylizing table
+ *  Capitilize column header
+ *  Break the page down into components
+ * Add Search by name
+ *  Structure the page with grids
  *
  */
 
