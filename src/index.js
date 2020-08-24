@@ -9,7 +9,6 @@ import * as serviceWorker from "./serviceWorker";
 // Relative Imports
 import { getRows, getColumns } from "./processapi";
 import { useStyles } from "./style/styles";
-import EnhancedTableHead from "./components/EnhancedTableHead";
 import TeamTableHeader from "./components/TeamTableHeader";
 import TeamTableBody from "./components/TeamTableBody";
 
@@ -28,74 +27,22 @@ const App = () => {
   const [columns, setColumns] = useState({});
   const [rowsPerPage, setRowsPerPage] = useState(5);
   const [page, setPage] = useState(0);
-  const [orderBy, setOrderBy] = useState("name");
-  const [order, setOrder] = useState("asc");
-
+  const [orderBy, setOrderBy] = useState('name');
+ 
   const classes = useStyles();
 
   useEffect(() => {
     setRows(getRows());
     setFilteredRows(getRows());
-    // let oldColumns = getColumns();
-    // let newColumns = {
-    //   Id: oldColumns.id,
-    //   Name: oldColumns.name,
-    //   NickName: oldColumns.nickname,
-    //   Conference: oldColumns.conference,
-    //   Division: oldColumns.division,
-    // };
     setColumns(getColumns());
   }, []);
 
-  useEffect(() => {
-    console.log("filteredRows in index", filteredRows);
-  },[filteredRows]);
 
   const filterRows = (event) => {
     let searchText = event.target.value.toLowerCase();
     setFilteredRows(
       rows.filter((row) => row.name.toLowerCase().includes(searchText))
     );
-  };
-
-  const handleRequestSort = (event, property) => {
-    const isAsc = orderBy === property && order === "asc";
-    setOrder(isAsc ? "desc" : "asc");
-    setOrderBy(property);
-  };
-
-  const sortTable = (element) => {
-    console.log("running");
-    // console.log("rows", rows);
-    let newRows = rows.sort((a, b) => {
-      let nameA = a.division.toUpperCase(); // ignore upper and lowercase
-      let nameB = b.division.toUpperCase(); // ignore upper and lowercase
-      if (nameA < nameB) {
-        return -1;
-      }
-      if (nameA > nameB) {
-        return 1;
-      }
-
-      // names must be equal
-      return 0;
-    });
-    // console.log("newRows", newRows);
-    // console.log("filteredRows", filteredRows);
-    setFilteredRows(rows);
-    // function(a, b) {
-    //   var nameA = a.name.toUpperCase(); // ignore upper and lowercase
-    //   var nameB = b.name.toUpperCase(); // ignore upper and lowercase
-    //   if (nameA < nameB) {
-    //     return -1;
-    //   }
-    //   if (nameA > nameB) {
-    //     return 1;
-    //   }
-
-    //   // names must be equal
-    //   return 0;
-    // });
   };
 
   return (
@@ -123,18 +70,7 @@ const App = () => {
         <Grid item xs={12}>
           <TableContainer component={Paper}>
             <Table className={classes.table} aria-label="simple table">
-              {/* <EnhancedTableHead
-                classes={classes}
-                order={order}
-                orderBy={orderBy}
-                onRequestSort={handleRequestSort}
-                columns={columns}
-              /> */}
-
-              <TeamTableHeader
-                columns={columns}
-                sortTable={sortTable}
-              />
+              <TeamTableHeader columns={columns} />
               <TeamTableBody
                 rows={filteredRows}
                 page={page}

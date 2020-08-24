@@ -3,7 +3,6 @@ import myData from "./resulta.json";
 
 // This function fetches all the rows from the JSON file
 export function getRows() {
-  // console.log(myData.results.data.team);
   return myData.results.data.team;
 }
 

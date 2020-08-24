@@ -4,7 +4,8 @@
  * Props: rows, page and rowsPerPage
  */
 
-import React, { useState, useEffect } from "react";
+
+import React from "react";
 import TableBody from "@material-ui/core/TableBody";
 import TableRow from "@material-ui/core/TableRow";
 import TableCell from "@material-ui/core/TableCell";
@@ -28,10 +29,6 @@ const TeamTableBody = (props) => {
       fontSize: 14,
     },
   }))(TableCell);
-
-  useEffect(() => {
-    console.log("teamtablebodyrows", props.rows);
-  });
 
   return (
     <TableBody>
